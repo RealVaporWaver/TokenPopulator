@@ -64,7 +64,7 @@ var ValidatedInvs []string
 
 func solveCaptcha(httpClient *http.Client, captcha Captcha, TaskId TaskIdStruct, Solution SolutionStruct) string {
 
-	payload := TaskPayload{ClientKey: "57e79074192061f7e36a2eb5d6bed7a1", Data: captcha.RqData, IsInvisible: true, UserAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0", Task: struct {
+	payload := TaskPayload{ClientKey: "", Data: captcha.RqData, IsInvisible: true, UserAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0", Task: struct {
 		Type       string "json:\"type\""
 		WebsiteURL string "json:\"websiteURL\""
 		WebsiteKey string "json:\"websiteKey\""
@@ -127,7 +127,7 @@ func validateInvites(invs []string, httpClient *http.Client) []string {
 		var Invite VInvite
 		req, _ := http.NewRequest("GET", "https://discord.com/api/v9/invites/"+invs[index], nil)
 		req.Header.Set("user-agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36")
-		req.Header.Set("authorization", "OTk1Mjc5MTcwNDQxNTg0Njcw.GwMqvp.6eJD3oUmnXvErjEcuSEJ_eXk-NZ6HExSYYzA10")
+		req.Header.Set("authorization", "")
 
 		resp, _ := httpClient.Do(req)
 
@@ -219,7 +219,7 @@ func main() {
 		//req2.Header.Set("Accept-Encoding", "gzip, deflate, br")
 		//req2.Header.Set("Content-Type", "application/json")
 		//req2.Header.Set("X-Context-Properties", "eyJsb2NhdGlvbiI6Ikludml0ZSBCdXR0b24gRW1iZWQiLCJsb2NhdGlvbl9ndWlsZF9pZCI6bnVsbCwibG9jYXRpb25fY2hhbm5lbF9pZCI6IjEwMDUyMDAwNzM0NTU1NzkyNTciLCJsb2NhdGlvbl9jaGFubmVsX3R5cGUiOjEsImxvY2F0aW9uX21lc3NhZ2VfaWQiOiIxMDA1MjAwMTAxMzI2NzM3NDIyIn0=")
-		//req2.Header.Set("Authorization", "OTk1NzA5MTAwNDg4OTIxMDk4.GLLQgl.Z8Qz7vhUjRhBemP3uDq8JEjgalh29PjaZG6gF0")
+		//req2.Header.Set("Authorization", "")
 		req2.Header.Set("X-Super-Properties", "eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiRmlyZWZveCIsImRldmljZSI6IiIsInN5c3RlbV9sb2NhbGUiOiJlbi1VUyIsImJyb3dzZXJfdXNlcl9hZ2VudCI6Ik1vemlsbGEvNS4wIChXaW5kb3dzIE5UIDEwLjA7IFdpbjY0OyB4NjQ7IHJ2OjEwMi4wKSBHZWNrby8yMDEwMDEwMSBGaXJlZm94LzEwMi4wIiwiYnJvd3Nlcl92ZXJzaW9uIjoiMTAyLjAiLCJvc192ZXJzaW9uIjoiMTAiLCJyZWZlcnJlciI6IiIsInJlZmVycmluZ19kb21haW4iOiIiLCJyZWZlcnJlcl9jdXJyZW50IjoiIiwicmVmZXJyaW5nX2RvbWFpbl9jdXJyZW50IjoiIiwicmVsZWFzZV9jaGFubmVsIjoic3RhYmxlIiwiY2xpZW50X2J1aWxkX251bWJlciI6MTQwMzU1LCJjbGllbnRfZXZlbnRfc291cmNlIjpudWxsfQ==")
 		//req2.Header.Set("X-Discord-Locale", "en-US")
 		//req2.Header.Set("X-Debug-Options", "bugReporterEnabled")
